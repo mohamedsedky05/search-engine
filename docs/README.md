@@ -1,8 +1,8 @@
 # Documentation & assets
 
-Place the following files here for the main README to display them:
+This folder contains screenshots used in the main README file.
 
-- **screenshot-search.png** — Screenshot of the search page (home).
-- **screenshot-results.png** — Screenshot of the results page with sample results.
+- **Screenshot-Search.png** — Search page screenshot
+- **Screenshot-Result.png** — Results page screenshot
 
-After adding these files, the README will show them in the [Example Queries & Screenshots](README.md#example-queries--screenshots) section.
+
