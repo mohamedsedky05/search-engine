@@ -111,11 +111,11 @@ http://localhost:8000
 
 ### Search page
 
-![Search Page](docs/screenshot-search.png)
+![Search Page](docs/Screenshot-Search.png)
 
 ### Results page
 
-![Results Page](docs/screenshot-results.png)
+![Results Page](docs/Screenshot-Results.png)
 
 ---
 
