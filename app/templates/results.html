@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if query %}{{ query }} – {% endif %}Search Results</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1><a href="/">Mini Search Engine</a></h1>
+      <form class="search-form inline" action="/search" method="get" role="search">
+        <input
+          type="search"
+          name="q"
+          value="{{ query }}"
+          placeholder="Search..."
+          aria-label="Search"
+          class="search-input"
+        />
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+    </header>
+
+    <main class="results-main">
+      {% if not query.strip() %}
+        <p class="empty-state">Enter a search query above.</p>
+      {% elif total == 0 %}
+        <p class="empty-state">No results found for <strong>{{ query }}</strong>.</p>
+      {% else %}
+        <p class="results-info">
+          About {{ total }} result{{ 's' if total != 1 else '' }}
+          {% if total > 0 %}
+            (page {{ page }})
+          {% endif %}
+        </p>
+
+        <ul class="results-list">
+          {% for r in results %}
+          <li class="result-card">
+            <h2 class="result-title"><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.title or r.url }}</a></h2>
+            <p class="result-url">{{ r.url }}</p>
+            <p class="result-snippet">{{ r.snippet | safe }}</p>
+            <span class="result-score">Score: {{ "%.4f" | format(r.score) }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+
+        {% if total > per_page %}
+        <nav class="pagination" aria-label="Results pagination">
+          {% set total_pages = (total + per_page - 1) // per_page %}
+          {% if page > 1 %}
+            <a href="/search?q={{ query | urlencode }}&page={{ page - 1 }}&per_page={{ per_page }}" class="page-link">Previous</a>
+          {% endif %}
+          <span class="page-info">Page {{ page }} of {{ total_pages }}</span>
+          {% if page < total_pages %}
+            <a href="/search?q={{ query | urlencode }}&page={{ page + 1 }}&per_page={{ per_page }}" class="page-link">Next</a>
+          {% endif %}
+        </nav>
+        {% endif %}
+      {% endif %}
+    </main>
+
+    <footer class="footer">
+      <a href="/">Home</a> &middot;
+      <a href="/api/status">API Status</a>
+    </footer>
+  </div>
+</body>
+</html>

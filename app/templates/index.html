@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Search Engine</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Mini Search Engine</h1>
+      <p class="tagline">Crawl, index, and search the web</p>
+    </header>
+
+    <form class="search-form" action="/search" method="get" role="search">
+      <input
+        type="search"
+        name="q"
+        value=""
+        placeholder="Enter your search query..."
+        aria-label="Search"
+        autofocus
+        class="search-input"
+      />
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+
+    <p class="hint">Tip: Use quotes for phrase search, e.g. <code>"exact phrase"</code></p>
+
+    <footer class="footer">
+      <a href="/api/status">API Status</a> &middot;
+      <a href="/api/docs">API Docs</a>
+    </footer>
+  </div>
+</body>
+</html>
