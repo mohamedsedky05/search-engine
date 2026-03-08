@@ -34,29 +34,29 @@ Crawler → Parser → SQLite → Indexer → Ranker → API → Web UI
 
 ## Project Structure
 
-```
+```text
 search_engine_project/
 
-├── app/
-│   ├── crawler/        # Web crawler
-│   ├── indexing/       # Inverted index builder
-│   ├── ranking/        # TF-IDF ranking
-│   ├── search/         # Search service
-│   ├── templates/      # HTML templates
-│   ├── static/         # CSS
+├── app/              # Main application code
+│   ├── crawler/      # Web crawler
+│   ├── indexing/     # Inverted index builder
+│   ├── ranking/      # Ranking logic (TF-IDF)
+│   ├── search/       # Search service
+│   ├── templates/    # HTML templates
+│   ├── static/       # CSS
 │   ├── config.py
 │   ├── database.py
-│   └── main.py
+│   ├── main.py
+│   ├── models.py
+│   └── schemas.py
 │
-├── scripts/
+├── scripts/          # CLI scripts (crawl & build index)
 │   ├── crawl.py
 │   └── build_index.py
 │
-├── tests/
+├── tests/            # Unit tests
 │
-├── docs/
-│   ├── screenshot-search.png
-│   └── screenshot-results.png
+├── docs/             # Screenshots
 │
 ├── requirements.txt
 ├── Dockerfile
